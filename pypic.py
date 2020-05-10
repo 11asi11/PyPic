@@ -1,3 +1,5 @@
+# author: 11asi11
+# first release date: 10.5.2020
 import os
 from colorama import Fore
 from PIL import Image
