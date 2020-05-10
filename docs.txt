@@ -1,0 +1,21 @@
+PyPic:
+pypic hides files in pictures
+
+pypic uses the least significant 2 bits in each byte inside a RGBA pixel:
+
+pypic converts this data to binary and for each pixel in picture
+it can hide 1 byte which means that you can hide 1 byte of data for each 4 bytes in the picture
+
+for example for hiding the word: heyy
+         h        e        y        y
+heyy ==> 01101000 01100101 01111001 01111001
+
+original pixels:                         pixels with hidden data:
+
+R        G        B        A             R     ** B     ** G     ** A     **
+11111111 00000000 00000000 11111111   \  11111101 00000010 00000010 11111100 ==> h is hidden here
+00000000 11111111 00000000 11111111 ===\ 00000001 11111110 00000001 11111101 ==> e is hidden here
+00000000 11111111 00000000 11111111 ===/ 00000001 11111111 00000010 11111101 ==> y is hidden here
+11111111 11111111 11111111 11111111   /  11111101 11111111 11111110 11111101 ==> y is hidden here
+
+with that way the picture is not significantly changes and the data stays hidden and undetected
